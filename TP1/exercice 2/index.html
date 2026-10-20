@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Validation Email</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .valide { color: green; font-weight: bold; }
+        .invalide { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h3>Verification d'adresse email</h3>
+    <input type="text" id="emailInput" placeholder="Entrez votre email...">
+    <button onclick="verifierEmail()">Vérifier</button>
+    <p id="resultat"></p>
+    <script>
+        function verifierEmail() {
+            const email = document.getElementById("emailInput").value.trim();
+            const resultat = document.getElementById("resultat");
+            const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            if (regex.test(email)) {
+                resultat.textContent = "L'adresse email est valide !";
+                resultat.className = "valide";
+            } else {
+                resultat.textContent = "L'adresse email est invalide.";
+                resultat.className = "invalide";
+            }
+        }
+    </script>
+</body>
+</html>
