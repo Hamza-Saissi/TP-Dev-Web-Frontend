@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Filtrage de tableau</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            max-width: 600px;
+        }
+        h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        #champRecherche {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 2px solid #333;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+        #listeProduits {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        #listeProduits li {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 8px;
+            font-size: 14px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h2>Liste de Produits</h2>
+    <input type="text" id="champRecherche" placeholder="Rechercher un produit..." onkeyup="filtrerProduits()">
+    <ul id="listeProduits">
+        <li>Ordinateur Portable</li>
+        <li>Smartphone</li>
+        <li>Casque Audio</li>
+        <li>Écran LED</li>
+        <li>Clavier Mécanique</li>
+        <li>Souris Sans Fil</li>
+    </ul>
+    <script>
+        function filtrerProduits() {
+            const texteRecherche = document.getElementById("champRecherche").value.toLowerCase();
+            const produits = document.querySelectorAll("#listeProduits li");
+            produits.forEach(function(produit) {
+                const nomProduit = produit.textContent.toLowerCase();
+                if (nomProduit.includes(texteRecherche)) {
+                    produit.style.display = "block";
+                } else {
+                    produit.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>

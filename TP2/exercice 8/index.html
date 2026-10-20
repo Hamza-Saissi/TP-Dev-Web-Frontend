@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Evenements de souris</title>
+    <style>
+        #maDiv {
+            width: 220px;
+            height: 220px;
+            background-color: #3498db;
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+    </style>
+</head>
+<body>
+    <div id="maDiv">Passez la souris ici</div>
+    <script>
+        const boite = document.getElementById("maDiv");
+        boite.addEventListener("mouseenter", function() {
+            boite.style.backgroundColor = "#e74c3c";
+        });
+        boite.addEventListener("mouseleave", function() {
+            boite.style.backgroundColor = "#3498db";
+        });
+    </script>
+</body>
+</html>

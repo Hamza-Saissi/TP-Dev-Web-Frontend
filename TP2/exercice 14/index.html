@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Drag and Drop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 40px;
+        }
+        h2 {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        .conteneur {
+            display: flex;
+            justify-content: center;
+            gap: 100px;
+        }
+        .zone {
+            width: 180px;
+            min-height: 220px;
+            background-color: #f4f4f4;
+            border-radius: 8px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #zoneDepart {
+            border: 1px solid #ccc;
+        }
+        #zoneDepot {
+            border: 2px dashed #888;
+        }
+        .zone h4 {
+            margin-top: 5px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        .element {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            margin-bottom: 12px;
+            border-radius: 5px;
+            font-size: 13px;
+            cursor: grab;
+            width: 80px;
+            text-align: center;
+        }
+        .element:active {
+            cursor: grabbing;
+        }
+    </style>
+</head>
+<body>
+    <h2>Drag and Drop Example</h2>
+    <div class="conteneur">
+        <div id="zoneDepart" class="zone" ondragover="autoriserDepot(event)" ondrop="deposer(event)">
+            <h4>À déplacer</h4>
+            <div id="elem1" class="element" draggable="true" ondragstart="glisser(event)">Élément 1</div>
+            <div id="elem2" class="element" draggable="true" ondragstart="glisser(event)">Élément 2</div>
+            <div id="elem3" class="element" draggable="true" ondragstart="glisser(event)">Élément 3</div>
+        </div>
+        <div id="zoneDepot" class="zone" ondragover="autoriserDepot(event)" ondrop="deposer(event)">
+            <h4>Déposer ici</h4>
+        </div>
+    </div>
+    <script>
+        function glisser(event) {
+            event.dataTransfer.setData("text/plain", event.target.id);
+        }
+        function autoriserDepot(event) {
+            event.preventDefault();
+        }
+        function deposer(event) {
+            event.preventDefault();
+            const idElement = event.dataTransfer.getData("text/plain");
+            const elementDeplace = document.getElementById(idElement);
+            const zoneCible = event.currentTarget;
+            zoneCible.appendChild(elementDeplace);
+        }
+    </script>
+</body>
+</html>

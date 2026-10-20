@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Thème clair/sombre</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #000000;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        header {
+            background-color: #f0f0f0;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            margin: 0;
+            font-size: 22px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 14px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        body.theme-sombre {
+            background-color: #121212;
+            color: #ffffff;
+        }
+        body.theme-sombre header {
+            background-color: #e8e8e8;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>Basculer entre Thème Clair et Sombre</h2>
+    </header>
+    <button id="btnTheme">Activer le Thème Sombre</button>
+    <script>
+        const btnTheme = document.getElementById("btnTheme");
+        const body = document.body;
+        const themeEnregistre = localStorage.getItem("theme");
+        if (themeEnregistre === "sombre") {
+            body.classList.add("theme-sombre");
+            btnTheme.textContent = "Activer le Thème Clair";
+        }
+        btnTheme.addEventListener("click", function() {
+            body.classList.toggle("theme-sombre");
+            if (body.classList.contains("theme-sombre")) {
+                btnTheme.textContent = "Activer le Thème Clair";
+                localStorage.setItem("theme", "sombre"); // Sauvegarder "sombre"
+            } else {
+                btnTheme.textContent = "Activer le Thème Sombre";
+                localStorage.setItem("theme", "clair"); // Sauvegarder "clair"
+            }
+        });
+    </script>
+</body>
+</html>

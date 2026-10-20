@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>image gallery</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+       
+        .container img
+        {
+         
+          margin-left: 25px;
+          margin-top: 25px;
+        }
+        .container
+        {   width: fit-content;
+        
+           
+        }
+        button
+        {
+            
+            
+            margin-left: 25px;
+            margin-top: 25px;
+            
+        }
+
+    </style>
+</head>
+<body>  
+    <div id="global" class="container">
+      <img src="images/image1.jfif" alt="" id="image_1">
+      
+
+    </div>
+    <button id="next">next</button>
+    <button id="previous">previous</button>
+    <script>
+      
+   const images =[
+            "images/image1.jfif",
+            "images/image2.jfif",
+            "images/image3.jfif",
+            "images/image4.jfif"
+        ]
+
+
+        let currentIndex= 0;
+    const imgElem = document.getElementById("image_1");
+    const next = document.getElementById("next");
+    const previous = document.getElementById("previous");
+        function updateImage()
+        {
+            imgElem.src = images[currentIndex];
+
+        }
+        next.onclick = function()
+        {
+            currentIndex++;
+            if(currentIndex>=images.length)
+            {
+                currentIndex = 0;
+            }
+            updateImage();
+        };
+        previous.onclick = function()
+        {
+            currentIndex --;
+            if(currentIndex<0)
+            {
+                currentIndex = images.length-1;
+            }
+            updateImage();
+        };
+
+
+    </script>
+</body>
+</html>

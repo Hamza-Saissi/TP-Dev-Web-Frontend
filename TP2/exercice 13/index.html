@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Animation de barre de progression</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            text-align: center;
+        }
+        h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .conteneur-barre {
+            width: 80%;
+            max-width: 600px;
+            height: 30px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin: 0 auto 25px auto;
+            overflow: hidden;
+        }
+        #barreProgression {
+            width: 0%;
+            height: 100%;
+            background-color: #4caf50; /* Vert */
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007ba7;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #005f82;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Barre de Progression</h2>
+    <div class="conteneur-barre">
+        <div id="barreProgression"></div>
+    </div>
+    <button onclick="demarrerProgression()">Démarrer la Progression</button>
+    <script>
+        let intervalle = null;
+        function demarrerProgression() {
+            const barre = document.getElementById("barreProgression");
+            let largeur = 0;
+            clearInterval(intervalle);
+            barre.style.width = "0%";
+            intervalle = setInterval(function() {
+                if (largeur >= 100) {
+                    clearInterval(intervalle);
+                } else {
+                    largeur++;
+                    barre.style.width = largeur + "%";
+                }
+            }, 30);
+        }
+    </script>
+</body>
+</html>

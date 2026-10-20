@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="paragraph">this is paragraph</p>
+    <button id="btn1">masquer</button>
+    <button id="btn2">afficher</button>
+    <script>
+        let paragraph = document.getElementById("paragraph");
+        let masquer = document.getElementById("btn1");
+        let afficher = document.getElementById("btn2");
+        masquer.onclick = function()
+        {
+            paragraph.style.display="none";
+        };
+        afficher.onclick = function()
+        {
+            paragraph.style.display ="block";
+        };
+
+
+    </script>
+</body>
+</html>
